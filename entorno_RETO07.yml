@@ -1,4 +1,4 @@
-name:  entorno_RETO07
+name: entorno_RETO07
 channels:
   - defaults
 dependencies:
@@ -32,3 +32,4 @@ dependencies:
       - flask
       - scikit-learn
       - xgboost
+      - plotly
