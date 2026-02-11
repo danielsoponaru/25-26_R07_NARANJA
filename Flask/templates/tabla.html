@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="form-hero">
+    <div>
+      <p class="eyebrow">Historial</p>
+      <h1>Resultado de la simulación</h1>
+      <p class="lead">
+        {% if registro %}
+          Simulación guardada para el DNI {{ dni }}.
+        {% else %}
+          No se encontró una simulación para el DNI {{ dni }}.
+        {% endif %}
+      </p>
+    </div>
+  </section>
+
+  {% if registro %}
+    <div class="table-card">
+      <table class="data-table">
+        <tbody>
+          <tr><th>Nombre completo</th><td>{{ registro["nombre"] }}</td></tr>
+          <tr><th>Edad</th><td>{{ registro["edad"] }}</td></tr>
+          <tr><th>Ingresos</th><td>{{ registro["ingresos"] }}</td></tr>
+          <tr><th>Monto inicial</th><td>{{ registro["monto_inicial"] }}</td></tr>
+          <tr><th>Scoring crediticio</th><td>{{ registro["scoring_crediticio"] }}</td></tr>
+          <tr><th>Meses empleo</th><td>{{ registro["meses_empleo"] }}</td></tr>
+          <tr><th>Número créditos</th><td>{{ registro["num_creditos"] }}</td></tr>
+          <tr><th>Ratio interés</th><td>{{ registro["ratio_interes"] }}</td></tr>
+          <tr><th>Duración</th><td>{{ registro["duracion"] }}</td></tr>
+          <tr><th>Ratio deuda/ingresos</th><td>{{ registro["ratio_deuda_ingresos"] }}</td></tr>
+          <tr><th>Estudios</th><td>{{ registro["estudios"] }}</td></tr>
+          <tr><th>Posesión hipoteca</th><td>{{ registro["posesion_hipoteca"] }}</td></tr>
+          <tr><th>Personas a cargo</th><td>{{ registro["personas_cargo"] }}</td></tr>
+          <tr><th>Fiador</th><td>{{ registro["fiador"] }}</td></tr>
+          <tr><th>Jornada</th><td>{{ registro["jornada"] }}</td></tr>
+          <tr><th>Estado civil</th><td>{{ registro["estado_civil"] }}</td></tr>
+          <tr><th>Registrado</th><td>{{ registro["created_at"] }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+
+  <div class="form-actions">
+    <a class="btn btn-primary" href="{{ url_for('index') }}">Volver a la página principal</a>
+    <a class="btn btn-ghost" href="{{ url_for('historial') }}">Nueva búsqueda</a>
+  </div>
+{% endblock %}
