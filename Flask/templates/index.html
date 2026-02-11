@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Seguros Lagun Aro</p>
+      <h1>Simula la concesión de tu préstamo con una experiencia clara y elegante.</h1>
+      <p class="lead">
+        Este simulador de préstamos está pensado para la adquisición de un vehículo.
+        Accede al formulario para introducir los datos necesarios y generar la simulación
+        de forma rápida y ordenada.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('identificacion') }}">
+          Simula tu concesión del préstamo
+        </a>
+        <a class="btn btn-ghost" href="{{ url_for('historial') }}">
+          Historial
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <span>Acceso principal</span>
+        <strong>Simulador</strong>
+      </div>
+      <div class="hero-card-body">
+        <p>
+          Completa los campos requeridos y obtén una vista previa para la toma de decisión.
+        </p>
+        <ul class="bullet-list">
+          <li>Datos personales</li>
+          <li>Perfil crediticio</li>
+          <li>Condiciones del préstamo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="esg">
+    <div class="esg-card">
+      <h2 class="scroll-reveal-text">Quiénes somos</h2>
+      <p class="scroll-reveal-text">
+        Seguros Lagun Aro es una aseguradora con vocación cooperativa y foco en el
+        acompañamiento a las personas. Ofrece soluciones para proteger el día a día,
+        con una atención cercana, un servicio experto y una cultura de mejora continua
+        que pone la confianza en el centro.
+      </p>
+      <p class="scroll-reveal-text">
+        Su modelo se apoya en el conocimiento del territorio, la proximidad con los
+        clientes y el compromiso con una experiencia clara y accesible. Esta misma
+        filosofía inspira el simulador de préstamos para la adquisición de vehículo.
+      </p>
+      <ul class="bullet-list">
+        <li>371.000 clientes</li>
+        <li>26 M€ en beneficios (2024)</li>
+        <li>200 M€ en primas</li>
+        <li>Ratio de solvencia del 440%</li>
+      </ul>
+    </div>
+    <div class="esg-card">
+      <h2 class="scroll-reveal-text">Compromisos ESG</h2>
+      <p class="scroll-reveal-text">
+        Integramos criterios ambientales, sociales y de buen gobierno en la toma de
+        decisiones. Priorizamos la gestión responsable, la transparencia y el impacto
+        positivo en la comunidad, con objetivos medibles y un enfoque de largo plazo.
+      </p>
+      <p class="scroll-reveal-text">
+        El compromiso ambiental impulsa la eficiencia y la reducción de huella. El
+        compromiso social refuerza el bienestar de clientes y personas trabajadoras. Y
+        el compromiso de buen gobierno se materializa en ética, cumplimiento y
+        transparencia.
+      </p>
+      <ul class="bullet-list">
+        <li>Ambiental: eficiencia y reducción de huella.</li>
+        <li>Social: bienestar de clientes y personas trabajadoras.</li>
+        <li>Gobierno: ética, cumplimiento y transparencia.</li>
+      </ul>
+    </div>
+    <div class="esg-card">
+      <h2 class="scroll-reveal-text">Expansión</h2>
+      <p class="scroll-reveal-text">
+        La compañía está en expansión a otras comunidades, reforzando su presencia y
+        ampliando su propuesta de valor con soluciones adaptadas a cada territorio.
+      </p>
+      <p class="scroll-reveal-text">
+        Esta fase de crecimiento se apoya en la digitalización, la mejora de procesos
+        y la creación de nuevos puntos de contacto con el cliente para sostener un
+        servicio de calidad.
+      </p>
+    </div>
+  </section>
+
+  <section class="scroll-reveal-section">
+    <h2 class="scroll-reveal">
+      <p class="scroll-reveal-text">
+        Cada paso del simulador está pensado para que la experiencia sea clara,
+        precisa y confiable.
+      </p>
+    </h2>
+    <h2 class="scroll-reveal">
+      <p class="scroll-reveal-text">
+        La simulación recoge datos personales y financieros para construir una vista
+        integral del perfil y facilitar la toma de decisiones.
+      </p>
+    </h2>
+  </section>
+
+  <section class="info-section">
+    <div class="info-card">
+      <h2 class="scroll-reveal-text">Visión de negocio</h2>
+      <p class="scroll-reveal-text">
+        El simulador se integra en una estrategia de servicio que busca simplificar el
+        acceso al crédito para la adquisición de vehículo, priorizando claridad en los
+        requisitos, tiempos de respuesta y trazabilidad del proceso.
+      </p>
+    </div>
+    <div class="info-card">
+      <h2 class="scroll-reveal-text">Gobierno del dato</h2>
+      <p class="scroll-reveal-text">
+        La captura de datos se diseña para ser consistente, verificable y reutilizable,
+        lo que permite mantener un historial fiable de simulaciones, con foco en calidad
+        y protección de la información.
+      </p>
+    </div>
+  </section>
+
+  <section class="team">
+    <h2 class="scroll-reveal-text">Equipo del proyecto</h2>
+    <div class="team-grid">
+      <div class="team-card">Gaizka</div>
+      <div class="team-card">Daniel A.</div>
+      <div class="team-card">Aiert</div>
+      <div class="team-card">Ander</div>
+      <div class="team-card">Iñigo</div>
+    </div>
+  </section>
+
+{% endblock %}

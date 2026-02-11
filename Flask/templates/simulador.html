@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="form-hero">
+    <div>
+      <p class="eyebrow">Simulación</p>
+      <h1>Simula tu concesión del préstamo</h1>
+      <p class="lead">
+        Introduce la información solicitada para preparar la simulación. Todos los campos
+        se muestran en un único paso para facilitar la revisión.
+      </p>
+    </div>
+  </section>
+
+  <div id="loading-overlay" class="loading-overlay loading-overlay--simulador" aria-hidden="true">
+    <div class="loading" role="status" aria-live="polite" aria-label="Cargando">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p class="loading-text">Procesando simulación...</p>
+  </div>
+
+  <form class="loan-form" action="{{ url_for('simulador_post') }}" method="post" id="simulador-form">
+    <div class="form-grid">
+      <label class="field">
+        <span>Edad</span>
+        <input type="number" name="Edad" min="18" max="100" placeholder="Ej: 35" required />
+      </label>
+      <label class="field">
+        <span>Ingresos</span>
+        <input type="number" name="Ingresos" step="0.01" placeholder="Ej: 24000" required />
+      </label>
+      <label class="field">
+        <span>Monto inicial</span>
+        <input type="number" name="Monto_Inicial" step="0.01" placeholder="Ej: 5000" required />
+      </label>
+      <label class="field">
+        <span>Scoring crediticio</span>
+        <input type="number" name="Scoring_Crediticio" min="0" max="1000" placeholder="Ej: 720" required />
+      </label>
+      <label class="field">
+        <span>Meses de empleo</span>
+        <input type="number" name="Meses_Empleo" min="0" placeholder="Ej: 48" required />
+      </label>
+      <label class="field">
+        <span>Número de créditos</span>
+        <input type="number" name="Num_Creditos" min="0" placeholder="Ej: 3" required />
+      </label>
+      <label class="field">
+        <span>Ratio de interés</span>
+        <input type="number" name="Ratio_Interes" step="0.01" placeholder="Ej: 3.5" required />
+      </label>
+      <label class="field">
+        <span>Duración (meses)</span>
+        <input type="number" name="Duracion" min="0" placeholder="Ej: 36" required />
+      </label>
+      <label class="field">
+        <span>Ratio deuda / ingresos</span>
+        <input type="number" name="Ratio_Deuda_Ingresos" step="0.01" placeholder="Ej: 0.28" required />
+      </label>
+      <label class="field">
+        <span>Estudios</span>
+        <select name="Estudios" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option value="escolar">Escolar</option>
+          <option value="universitario">Universitario</option>
+          <option value="master">Master</option>
+          <option value="doctorado">Doctorado</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Posesión hipoteca</span>
+        <select name="Posesion_Hipoteca" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Personas a cargo</span>
+        <input type="number" name="Personas_Cargo" min="0" placeholder="Ej: 2" required />
+      </label>
+      <label class="field">
+        <span>Fiador</span>
+        <select name="Fiador" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Jornada</span>
+        <select name="Jornada" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option value="autonomo">Autónomo</option>
+          <option value="desempleado">Desempleado</option>
+          <option value="jornada completa">Jornada completa</option>
+          <option value="jornada parcial">Jornada parcial</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Estado civil</span>
+        <select name="Estado_Civil" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option value="casado">Casado</option>
+          <option value="divorciado">Divorciado</option>
+          <option value="soltero">Soltero</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Simular</button>
+      <button class="btn btn-ghost" type="reset">Limpiar</button>
+    </div>
+  </form>
+
+  <script>
+    const simuladorForm = document.getElementById("simulador-form");
+    const loadingOverlay = document.getElementById("loading-overlay");
+
+    simuladorForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      loadingOverlay.classList.add("is-visible");
+      loadingOverlay.setAttribute("aria-hidden", "false");
+      setTimeout(() => simuladorForm.submit(), 3000);
+    });
+  </script>
+{% endblock %}

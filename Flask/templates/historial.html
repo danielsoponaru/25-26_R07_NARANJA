@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="form-hero">
+    <div>
+      <p class="eyebrow">Historial</p>
+      <h1>Consulta tu simulación</h1>
+      <p class="lead">
+        Introduce tu DNI para ver la simulación guardada. No importa si está en mayúscula o minúscula.
+      </p>
+    </div>
+  </section>
+
+  <form class="loan-form" action="{{ url_for('historial') }}" method="post">
+    {% if error %}
+      <p class="form-error">{{ error }}</p>
+    {% endif %}
+    <div class="form-grid">
+      <label class="field">
+        <span>DNI</span>
+        <input type="text" name="dni" placeholder="Ej: 12345678Z" required />
+      </label>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Buscar</button>
+      <a class="btn btn-ghost" href="{{ url_for('index') }}">Volver</a>
+    </div>
+  </form>
+{% endblock %}
