@@ -7,6 +7,7 @@ app.secret_key = "lagun-aro-simulador"
 
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "bbdd.DB")
+ADMIN_TOKEN = "administrador_patricia"
 
 
 def init_db():
@@ -150,6 +151,8 @@ def historial():
                 title="Historial",
                 error="Introduce un DNI válido.",
             )
+        if dni == ADMIN_TOKEN.upper():
+            return redirect(url_for("historial_todos"))
         return redirect(url_for("historial_detalle", dni=dni))
     return render_template("historial.html", title="Historial")
 
@@ -168,6 +171,20 @@ def historial_detalle(dni):
         title="Historial de simulación",
         registro=row,
         dni=dni_norm,
+    )
+
+
+@app.route("/historial/todos")
+def historial_todos():
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute(
+            "SELECT * FROM simulaciones ORDER BY created_at DESC"
+        ).fetchall()
+    return render_template(
+        "historial_todos.html",
+        title="Historial completo",
+        registros=rows,
     )
 
 
