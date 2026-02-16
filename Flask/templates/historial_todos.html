@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="form-hero">
+    <div>
+      <p class="eyebrow">Historial completo</p>
+      <h1>Simulaciones registradas</h1>
+      <p class="lead">
+        Vista administrativa con todas las simulaciones guardadas.
+      </p>
+    </div>
+  </section>
+
+  <div class="plain-panel">
+    {% for registro in registros %}
+      <div class="plain-item">
+        <div class="plain-row">
+          <span class="plain-label">DNI</span>
+          <span class="plain-value">{{ registro["dni"] }}</span>
+        </div>
+        <div class="plain-row">
+          <span class="plain-label">Nombre</span>
+          <span class="plain-value">{{ registro["nombre"] }}</span>
+        </div>
+        <div class="plain-row">
+          <span class="plain-label">Fecha</span>
+          <span class="plain-value">{{ registro["created_at"] }}</span>
+        </div>
+        <a class="plain-link" href="{{ url_for('historial_detalle', dni=registro['dni']) }}">
+          Ver simulación
+        </a>
+      </div>
+    {% else %}
+      <p class="plain-empty">No hay simulaciones registradas.</p>
+    {% endfor %}
+  </div>
+
+  <div class="form-actions">
+    <a class="btn btn-primary" href="{{ url_for('index') }}">Volver a la página principal</a>
+    <a class="btn btn-ghost" href="{{ url_for('historial') }}">Nueva búsqueda</a>
+  </div>
+{% endblock %}
