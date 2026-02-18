@@ -1,18 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="landing">
-    <section class="hero hero-minimal">
+  <section class="intro-overlay intro-overlay-fixed" aria-label="Mensaje principal">
+    <div class="intro-overlay-visual-left">
+      <img
+        class="intro-overlay-image scroll-float-image"
+        src="{{ url_for('static', filename='img/inicio-personas-izquierda.png') }}"
+        alt="Personas en el lado izquierdo"
+      />
+    </div>
+    <div class="intro-overlay-text-wrap">
+      <h2 class="intro-overlay-text" id="intro-overlay-text">Para todo lo que necesites</h2>
+    </div>
+    <div class="intro-overlay-visual">
+      <img
+        class="intro-overlay-image scroll-float-image"
+        src="{{ url_for('static', filename='img/inicio-personas.png') }}"
+        alt="Equipo conversando"
+      />
+    </div>
+  </section>
+
+  <div class="landing landing-with-intro">
+
+    <section class="hero hero-minimal hero-stacked">
       <div class="hero-text">
         <p class="eyebrow">Seguros Lagun Aro</p>
-        <h1>Simula la concesión de tu préstamo con una experiencia clara y elegante.</h1>
+        <h1>Simula la concesion de tu prestamo con una experiencia clara y elegante.</h1>
         <p class="lead">
-          Este simulador de préstamos está pensado para la adquisición de un vehículo.
-          Introduce tus datos para obtener una simulación rápida y ordenada.
+          Este simulador de prestamos esta pensado para la adquisicion de un vehiculo.
+          Introduce tus datos para obtener una simulacion rapida y ordenada.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="{{ url_for('identificacion') }}">
-            Simula tu concesión del préstamo
+            Simula tu concesion del prestamo
           </a>
           <a class="btn btn-ghost" href="{{ url_for('historial') }}">
             Historial
@@ -20,90 +41,65 @@
         </div>
       </div>
 
-      <div class="hero-metrics">
-        <div class="metric">
-          <span class="metric-label">Clientes</span>
-          <span class="metric-value">371.000</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Beneficios 2024</span>
-          <span class="metric-value">26 M€</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Primas</span>
-          <span class="metric-value">200 M€</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Solvencia</span>
-          <span class="metric-value">440%</span>
+      <div class="hero-metrics hero-metrics-below">
+        <div class="metrics-glass-container" aria-label="Indicadores principales">
+          <article class="metrics-glass" data-text="371.000" style="--r:-16;">
+            <span class="metrics-glass-title">Clientes</span>
+          </article>
+          <article class="metrics-glass" data-text="26 MEUR" style="--r:-6;">
+            <span class="metrics-glass-title">Beneficios 2024</span>
+          </article>
+          <article class="metrics-glass" data-text="200 MEUR" style="--r:8;">
+            <span class="metrics-glass-title">Primas</span>
+          </article>
+          <article class="metrics-glass" data-text="440%" style="--r:18;">
+            <span class="metrics-glass-title">Solvencia</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section-grid">
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Quiénes somos</h2>
-        <p class="scroll-reveal-text">
-          Seguros Lagun Aro es una aseguradora con vocación cooperativa y foco en el
-          acompañamiento a las personas. Ofrece soluciones para proteger el día a día,
-          con una atención cercana, un servicio experto y una cultura de mejora continua.
-        </p>
-        <p class="scroll-reveal-text">
-          Su modelo se apoya en el conocimiento del territorio, la proximidad con los
-          clientes y el compromiso con una experiencia clara y accesible.
-        </p>
+    <section class="stacking-section" aria-label="Informacion principal">
+      <div class="curved-loop" aria-hidden="true">
+        <svg viewBox="0 0 1440 320" class="curved-loop-svg">
+          <defs>
+            <path id="curve" d="M-120,210 Q720,120 1560,210" fill="transparent"></path>
+          </defs>
+          <text class="loop-text">
+            <textPath href="#curve" startOffset="0%">
+              Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038;
+              <animate attributeName="startOffset" from="0%" to="-100%" dur="24s" repeatCount="indefinite"></animate>
+            </textPath>
+          </text>
+        </svg>
       </div>
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Compromisos ESG</h2>
-        <p class="scroll-reveal-text">
-          Integramos criterios ambientales, sociales y de buen gobierno en la toma de
-          decisiones. Priorizamos la gestión responsable, la transparencia y el impacto
-          positivo en la comunidad, con objetivos medibles y un enfoque de largo plazo.
-        </p>
-        <ul class="minimal-list">
-          <li>Ambiental: eficiencia y reducción de huella.</li>
-          <li>Social: bienestar de clientes y personas trabajadoras.</li>
-          <li>Gobierno: ética, cumplimiento y transparencia.</li>
-        </ul>
-      </div>
-    </section>
+      <div class="cards-wrapper">
+        <div class="card-stack">
+          <article class="stack-card">
+            <h2>Aseguradora cooperativa y cercana</h2>
+          </article>
 
-    <section class="section-grid">
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Expansión</h2>
-        <p class="scroll-reveal-text">
-          La compañía está en expansión a otras comunidades, reforzando su presencia y
-          ampliando su propuesta de valor con soluciones adaptadas a cada territorio.
-        </p>
-        <p class="scroll-reveal-text">
-          Esta fase de crecimiento se apoya en la digitalización, la mejora de procesos
-          y la creación de nuevos puntos de contacto con el cliente para sostener un
-          servicio de calidad.
-        </p>
-      </div>
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Simulador de vehículo</h2>
-        <p class="scroll-reveal-text">
-          La simulación recoge datos personales y financieros para construir una vista
-          integral del perfil y facilitar la toma de decisiones en la compra de un
-          vehículo, con trazabilidad y seguimiento en el historial.
-        </p>
-      </div>
-    </section>
+          <article class="stack-card">
+            <h2>Compromiso ESG en cada decision</h2>
+          </article>
 
-    <section class="scroll-reveal-section">
-      <h2 class="scroll-reveal">
-        <p class="scroll-reveal-text">
-          Cada paso del simulador está pensado para que la experiencia sea clara,
-          precisa y confiable.
-        </p>
-      </h2>
-      <h2 class="scroll-reveal">
-        <p class="scroll-reveal-text">
-          La simulación combina información personal, financiera y laboral para ofrecer
-          una visión coherente del perfil del solicitante.
-        </p>
-      </h2>
+          <article class="stack-card">
+            <h2>Expansion territorial y digital</h2>
+          </article>
+
+          <article class="stack-card">
+            <h2>Simulador para compra de vehiculo</h2>
+          </article>
+
+          <article class="stack-card">
+            <h2>Experiencia clara, precisa y confiable</h2>
+          </article>
+
+          <article class="stack-card">
+            <h2>Vision integral del perfil solicitante</h2>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section class="team team-minimal">
@@ -113,8 +109,9 @@
         <div class="team-card">Daniel A.</div>
         <div class="team-card">Aiert</div>
         <div class="team-card">Ander</div>
-        <div class="team-card">Iñigo</div>
+        <div class="team-card">Inigo</div>
       </div>
     </section>
   </div>
 {% endblock %}
+
