@@ -1,0 +1,36 @@
+{
+    "fecha_ejecucion": "2026-02-19 12:22:28",
+    "total_experimentos": 48,
+    "mejor_modelo": {
+        "nombre": "Gradient Boosting",
+        "reduccion": "sin_pca",
+        "encoding": "ohe",
+        "n_features": 22,
+        "hiperparametros": "{'learning_rate': 0.1, 'max_depth': 5, 'n_estimators': 200, 'subsample': 0.8}"
+    },
+    "metricas_validation": {
+        "r2": 0.9942193510789948,
+        "rmse": 11.140899801531846,
+        "mae": 7.149308893264978,
+        "mape": 3.9753397706244225
+    },
+    "metricas_test": {
+        "r2": 0.9943358002435696,
+        "r2_ajustado": 0.9943233737981526,
+        "rmse": 11.016193958958247,
+        "mae": 7.125506800335785,
+        "mape": 3.9636909691771978
+    },
+    "overfitting": {
+        "gap_train_val": 0.002497032295810886,
+        "gap_train_test": 0.0021809944908141032,
+        "modelos_con_overfitting": 13,
+        "pct_overfitting": 27.083333333333332
+    },
+    "datos": {
+        "n_total": 50253,
+        "n_train": 40202,
+        "n_val": 0,
+        "n_test": 10051
+    }
+}
