@@ -1,27 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="intro-overlay intro-overlay-fixed" aria-label="Mensaje principal">
-    <div class="intro-overlay-visual-left">
-      <img
-        class="intro-overlay-image scroll-float-image"
-        src="{{ url_for('static', filename='img/inicio-personas-izquierda.png') }}"
-        alt="Personas en el lado izquierdo"
-      />
-    </div>
-    <div class="intro-overlay-text-wrap">
-      <h2 class="intro-overlay-text" id="intro-overlay-text">Para todo lo que necesites</h2>
-    </div>
-    <div class="intro-overlay-visual">
-      <img
-        class="intro-overlay-image scroll-float-image"
-        src="{{ url_for('static', filename='img/inicio-personas.png') }}"
-        alt="Equipo conversando"
-      />
-    </div>
-  </section>
-
-  <div class="landing landing-with-intro">
+  <div class="landing">
 
     <section class="hero hero-minimal hero-stacked">
       <div class="hero-text">
@@ -76,27 +56,108 @@
       <div class="cards-wrapper">
         <div class="card-stack">
           <article class="stack-card">
-            <h2>Aseguradora cooperativa y cercana</h2>
+            <div class="stack-card-content">
+              <h2>ASI SOMOS</h2>
+              <p>
+                Seguros Lagun Aro esta formada por Seguros Lagun Aro Vida y Seguros Lagun Aro,
+                participadas al 100 % por LABORAL Kutxa e integrada en el Grupo Mondragon.
+              </p>
+              <p>
+                Ofrecemos un servicio profesional, honesto y cercano, con liderazgo en calidad y
+                asesoramiento personalizado.
+              </p>
+              <p>
+                Contamos con el certificado EthSI, distintivo de calidad etica y solidaria.
+              </p>
+              <p>
+                El 76 % de nuestros productos se comercializa en oficinas de LABORAL Kutxa, el 22 %
+                a traves de mediacion y el 2 % por canal digital.
+              </p>
+            </div>
           </article>
 
           <article class="stack-card">
-            <h2>Compromiso ESG en cada decision</h2>
+            <div class="stack-card-content">
+              <h2>CIFRAS CLAVE 2024</h2>
+              <p>
+                En 2024, Seguros Lagun Aro alcanzo 371.000 clientes y 647.083 polizas en cartera,
+                con un volumen total de primas de 199 millones de euros y un beneficio antes de
+                impuestos de 26,3 millones de euros. Las provisiones matematicas se situaron en
+                300 millones de euros.
+              </p>
+              <p>
+                El negocio de No Vida alcanzo los 143 millones de euros, destacando el ramo de
+                Automoviles con 76 millones y Hogar con 53 millones. El negocio de Vida se situo en
+                56 millones de euros.
+              </p>
+              <p>
+                La entidad mantiene una solida posicion de solvencia, con un ratio del 440 % en Vida,
+                234 % en No Vida y un 310 % a nivel de Grupo asegurador.
+              </p>
+            </div>
           </article>
 
           <article class="stack-card">
-            <h2>Expansion territorial y digital</h2>
+            <div class="stack-card-content">
+              <h2>SOSTENIBILIDAD</h2>
+              <p>
+                La sostenibilidad esta integrada en la gobernanza mediante un Comite de
+                Sostenibilidad y una Politica especifica que guia la estrategia a largo plazo.
+              </p>
+              <p>
+                Los temas materiales prioritarios son seguridad y privacidad de datos, cambio
+                climatico, producto sostenible, buen gobierno, inversion sostenible, innovacion y
+                apoyo a la sociedad.
+              </p>
+              <p>
+                Se integran criterios ESG en la inversion, la suscripcion y el diseno de productos,
+                incluyendo exclusiones sectoriales, analisis de riesgos y desarrollo de inversiones
+                tematicas sostenibles.
+              </p>
+            </div>
           </article>
 
           <article class="stack-card">
-            <h2>Simulador para compra de vehiculo</h2>
+            <div class="stack-card-content">
+              <h2>PERSONAS</h2>
+              <p>
+                La plantilla esta formada por 185 personas, el 69 % mujeres y el 31 % hombres.
+                El 97 % cuenta con contrato indefinido.
+              </p>
+              <p>
+                En 2024 se impartieron 10.415 horas de formacion, con una media de 55,99 horas por
+                persona y una participacion del 98 % de la plantilla.
+              </p>
+              <p>
+                El 50 % de los puestos de responsabilidad estan ocupados por mujeres y el 38 % del
+                Consejo de Direccion son mujeres.
+              </p>
+              <p>
+                En 2024 no se registraron accidentes laborales.
+              </p>
+            </div>
           </article>
 
           <article class="stack-card">
-            <h2>Experiencia clara, precisa y confiable</h2>
-          </article>
-
-          <article class="stack-card">
-            <h2>Vision integral del perfil solicitante</h2>
+            <div class="stack-card-content">
+              <h2>INNOVACION Y SERVICIO</h2>
+              <p>
+                La digitalizacion es un eje estrategico. El 35,1 % de las verificaciones de
+                automovil se realizan mediante autoverificacion con inteligencia artificial.
+                El 29 % de las peritaciones de automovil y el 25 % de hogar se realizaron en remoto.
+              </p>
+              <p>
+                Se implantaron 56 automatizaciones que liberaron 6.541 horas de trabajo.
+              </p>
+              <p>
+                El 87,2 % de la clientela de Autos y el 71,7 % de Hogar se muestran satisfechos o
+                muy satisfechos con la gestion del siniestro.
+              </p>
+              <p>
+                En 2024 se gestionaron 93.287 expedientes de hogar, se repararon 30.065 vehiculos y
+                el 92 % de las asistencias se atendieron en menos de una hora.
+              </p>
+            </div>
           </article>
         </div>
       </div>

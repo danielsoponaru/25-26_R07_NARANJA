@@ -132,59 +132,6 @@
         }
       }
 
-      const floatingImages = document.querySelectorAll(".scroll-float-image");
-      const introOverlayText = document.getElementById("intro-overlay-text");
-      if (floatingImages.length) {
-        const scrollThreshold = 35;
-        let hasRevealedFloatingImages = false;
-
-        const revealFloatingImages = () => {
-          if (hasRevealedFloatingImages) return;
-          hasRevealedFloatingImages = true;
-
-          floatingImages.forEach((image) => image.classList.add("is-visible"));
-          if (introOverlayText) {
-            introOverlayText.textContent = "hay un seguro";
-            introOverlayText.classList.add("is-switched");
-          }
-
-          window.removeEventListener("scroll", onScrollReveal);
-          window.removeEventListener("wheel", onWheelReveal);
-          window.removeEventListener("touchmove", onTouchReveal);
-          window.removeEventListener("keydown", onKeyReveal);
-        };
-
-        const onScrollReveal = () => {
-          if (window.scrollY > scrollThreshold) {
-            revealFloatingImages();
-          }
-        };
-
-        const onWheelReveal = (event) => {
-          if (event.deltaY > 0) {
-            revealFloatingImages();
-          }
-        };
-
-        const onTouchReveal = () => {
-          if (window.scrollY > 0) {
-            revealFloatingImages();
-          }
-        };
-
-        const onKeyReveal = (event) => {
-          if (["ArrowDown", "PageDown", " ", "Spacebar"].includes(event.key)) {
-            revealFloatingImages();
-          }
-        };
-
-        window.addEventListener("scroll", onScrollReveal, { passive: true });
-        window.addEventListener("wheel", onWheelReveal, { passive: true });
-        window.addEventListener("touchmove", onTouchReveal, { passive: true });
-        window.addEventListener("keydown", onKeyReveal);
-        onScrollReveal();
-      }
-
     </script>
   </body>
 </html>
