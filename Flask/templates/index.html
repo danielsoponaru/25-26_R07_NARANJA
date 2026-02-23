@@ -2,17 +2,18 @@
 
 {% block content %}
   <div class="landing">
-    <section class="hero hero-minimal">
+
+    <section class="hero hero-minimal hero-stacked">
       <div class="hero-text">
         <p class="eyebrow">Seguros Lagun Aro</p>
-        <h1>Simula la concesión de tu préstamo con una experiencia clara y elegante.</h1>
+        <h1>Simula la concesion de tu prestamo con una experiencia clara y elegante.</h1>
         <p class="lead">
-          Este simulador de préstamos está pensado para la adquisición de un vehículo.
-          Introduce tus datos para obtener una simulación rápida y ordenada.
+          Este simulador de prestamos esta pensado para la adquisicion de un vehiculo.
+          Introduce tus datos para obtener una simulacion rapida y ordenada.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="{{ url_for('identificacion') }}">
-            Simula tu concesión del préstamo
+            Simula tu concesion del prestamo
           </a>
           <a class="btn btn-ghost" href="{{ url_for('historial') }}">
             Historial
@@ -20,90 +21,146 @@
         </div>
       </div>
 
-      <div class="hero-metrics">
-        <div class="metric">
-          <span class="metric-label">Clientes</span>
-          <span class="metric-value">371.000</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Beneficios 2024</span>
-          <span class="metric-value">26 M€</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Primas</span>
-          <span class="metric-value">200 M€</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Solvencia</span>
-          <span class="metric-value">440%</span>
+      <div class="hero-metrics hero-metrics-below">
+        <div class="metrics-glass-container" aria-label="Indicadores principales">
+          <article class="metrics-glass" data-text="371.000" style="--r:-16;">
+            <span class="metrics-glass-title">Clientes</span>
+          </article>
+          <article class="metrics-glass" data-text="26 MEUR" style="--r:-6;">
+            <span class="metrics-glass-title">Beneficios 2024</span>
+          </article>
+          <article class="metrics-glass" data-text="200 MEUR" style="--r:8;">
+            <span class="metrics-glass-title">Primas</span>
+          </article>
+          <article class="metrics-glass" data-text="440%" style="--r:18;">
+            <span class="metrics-glass-title">Solvencia</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section-grid">
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Quiénes somos</h2>
-        <p class="scroll-reveal-text">
-          Seguros Lagun Aro es una aseguradora con vocación cooperativa y foco en el
-          acompañamiento a las personas. Ofrece soluciones para proteger el día a día,
-          con una atención cercana, un servicio experto y una cultura de mejora continua.
-        </p>
-        <p class="scroll-reveal-text">
-          Su modelo se apoya en el conocimiento del territorio, la proximidad con los
-          clientes y el compromiso con una experiencia clara y accesible.
-        </p>
+    <section class="stacking-section" aria-label="Informacion principal">
+      <div class="curved-loop" aria-hidden="true">
+        <svg viewBox="0 0 1440 320" class="curved-loop-svg">
+          <defs>
+            <path id="curve" d="M-120,210 Q720,120 1560,210" fill="transparent"></path>
+          </defs>
+          <text class="loop-text">
+            <textPath href="#curve" startOffset="0%">
+              Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038;
+              <animate attributeName="startOffset" from="0%" to="-100%" dur="24s" repeatCount="indefinite"></animate>
+            </textPath>
+          </text>
+        </svg>
       </div>
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Compromisos ESG</h2>
-        <p class="scroll-reveal-text">
-          Integramos criterios ambientales, sociales y de buen gobierno en la toma de
-          decisiones. Priorizamos la gestión responsable, la transparencia y el impacto
-          positivo en la comunidad, con objetivos medibles y un enfoque de largo plazo.
-        </p>
-        <ul class="minimal-list">
-          <li>Ambiental: eficiencia y reducción de huella.</li>
-          <li>Social: bienestar de clientes y personas trabajadoras.</li>
-          <li>Gobierno: ética, cumplimiento y transparencia.</li>
-        </ul>
-      </div>
-    </section>
+      <div class="cards-wrapper">
+        <div class="card-stack">
+          <article class="stack-card">
+            <div class="stack-card-content">
+              <h2>ASI SOMOS</h2>
+              <p>
+                Seguros Lagun Aro esta formada por Seguros Lagun Aro Vida y Seguros Lagun Aro,
+                participadas al 100 % por LABORAL Kutxa e integrada en el Grupo Mondragon.
+              </p>
+              <p>
+                Ofrecemos un servicio profesional, honesto y cercano, con liderazgo en calidad y
+                asesoramiento personalizado.
+              </p>
+              <p>
+                Contamos con el certificado EthSI, distintivo de calidad etica y solidaria.
+              </p>
+              <p>
+                El 76 % de nuestros productos se comercializa en oficinas de LABORAL Kutxa, el 22 %
+                a traves de mediacion y el 2 % por canal digital.
+              </p>
+            </div>
+          </article>
 
-    <section class="section-grid">
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Expansión</h2>
-        <p class="scroll-reveal-text">
-          La compañía está en expansión a otras comunidades, reforzando su presencia y
-          ampliando su propuesta de valor con soluciones adaptadas a cada territorio.
-        </p>
-        <p class="scroll-reveal-text">
-          Esta fase de crecimiento se apoya en la digitalización, la mejora de procesos
-          y la creación de nuevos puntos de contacto con el cliente para sostener un
-          servicio de calidad.
-        </p>
-      </div>
-      <div class="section-block">
-        <h2 class="scroll-reveal-text">Simulador de vehículo</h2>
-        <p class="scroll-reveal-text">
-          La simulación recoge datos personales y financieros para construir una vista
-          integral del perfil y facilitar la toma de decisiones en la compra de un
-          vehículo, con trazabilidad y seguimiento en el historial.
-        </p>
-      </div>
-    </section>
+          <article class="stack-card">
+            <div class="stack-card-content">
+              <h2>CIFRAS CLAVE 2024</h2>
+              <p>
+                En 2024, Seguros Lagun Aro alcanzo 371.000 clientes y 647.083 polizas en cartera,
+                con un volumen total de primas de 199 millones de euros y un beneficio antes de
+                impuestos de 26,3 millones de euros. Las provisiones matematicas se situaron en
+                300 millones de euros.
+              </p>
+              <p>
+                El negocio de No Vida alcanzo los 143 millones de euros, destacando el ramo de
+                Automoviles con 76 millones y Hogar con 53 millones. El negocio de Vida se situo en
+                56 millones de euros.
+              </p>
+              <p>
+                La entidad mantiene una solida posicion de solvencia, con un ratio del 440 % en Vida,
+                234 % en No Vida y un 310 % a nivel de Grupo asegurador.
+              </p>
+            </div>
+          </article>
 
-    <section class="scroll-reveal-section">
-      <h2 class="scroll-reveal">
-        <p class="scroll-reveal-text">
-          Cada paso del simulador está pensado para que la experiencia sea clara,
-          precisa y confiable.
-        </p>
-      </h2>
-      <h2 class="scroll-reveal">
-        <p class="scroll-reveal-text">
-          La simulación combina información personal, financiera y laboral para ofrecer
-          una visión coherente del perfil del solicitante.
-        </p>
-      </h2>
+          <article class="stack-card">
+            <div class="stack-card-content">
+              <h2>SOSTENIBILIDAD</h2>
+              <p>
+                La sostenibilidad esta integrada en la gobernanza mediante un Comite de
+                Sostenibilidad y una Politica especifica que guia la estrategia a largo plazo.
+              </p>
+              <p>
+                Los temas materiales prioritarios son seguridad y privacidad de datos, cambio
+                climatico, producto sostenible, buen gobierno, inversion sostenible, innovacion y
+                apoyo a la sociedad.
+              </p>
+              <p>
+                Se integran criterios ESG en la inversion, la suscripcion y el diseno de productos,
+                incluyendo exclusiones sectoriales, analisis de riesgos y desarrollo de inversiones
+                tematicas sostenibles.
+              </p>
+            </div>
+          </article>
+
+          <article class="stack-card">
+            <div class="stack-card-content">
+              <h2>PERSONAS</h2>
+              <p>
+                La plantilla esta formada por 185 personas, el 69 % mujeres y el 31 % hombres.
+                El 97 % cuenta con contrato indefinido.
+              </p>
+              <p>
+                En 2024 se impartieron 10.415 horas de formacion, con una media de 55,99 horas por
+                persona y una participacion del 98 % de la plantilla.
+              </p>
+              <p>
+                El 50 % de los puestos de responsabilidad estan ocupados por mujeres y el 38 % del
+                Consejo de Direccion son mujeres.
+              </p>
+              <p>
+                En 2024 no se registraron accidentes laborales.
+              </p>
+            </div>
+          </article>
+
+          <article class="stack-card">
+            <div class="stack-card-content">
+              <h2>INNOVACION Y SERVICIO</h2>
+              <p>
+                La digitalizacion es un eje estrategico. El 35,1 % de las verificaciones de
+                automovil se realizan mediante autoverificacion con inteligencia artificial.
+                El 29 % de las peritaciones de automovil y el 25 % de hogar se realizaron en remoto.
+              </p>
+              <p>
+                Se implantaron 56 automatizaciones que liberaron 6.541 horas de trabajo.
+              </p>
+              <p>
+                El 87,2 % de la clientela de Autos y el 71,7 % de Hogar se muestran satisfechos o
+                muy satisfechos con la gestion del siniestro.
+              </p>
+              <p>
+                En 2024 se gestionaron 93.287 expedientes de hogar, se repararon 30.065 vehiculos y
+                el 92 % de las asistencias se atendieron en menos de una hora.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section class="team team-minimal">
@@ -113,8 +170,9 @@
         <div class="team-card">Daniel A.</div>
         <div class="team-card">Aiert</div>
         <div class="team-card">Ander</div>
-        <div class="team-card">Iñigo</div>
+        <div class="team-card">Inigo</div>
       </div>
     </section>
   </div>
 {% endblock %}
+
