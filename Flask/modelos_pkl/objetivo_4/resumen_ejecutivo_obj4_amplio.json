@@ -1,0 +1,36 @@
+{
+    "fecha_ejecucion": "2026-02-24 10:40:06",
+    "total_experimentos": 48,
+    "mejor_modelo": {
+        "nombre": "LightGBM",
+        "reduccion": "sin_pca",
+        "encoding": "ohe",
+        "n_features": 22,
+        "hiperparametros": "{'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 200}"
+    },
+    "metricas_validation": {
+        "r2": 0.9938381140223597,
+        "rmse": 12.584478043794103,
+        "mae": 7.464964065358498,
+        "mape": 3.903643596420639
+    },
+    "metricas_test": {
+        "r2": 0.9943753431808227,
+        "r2_ajustado": 0.9943631470000596,
+        "rmse": 11.772264296258863,
+        "mae": 7.1228028413972755,
+        "mape": 3.8222957366230452
+    },
+    "overfitting": {
+        "gap_train_val": 0.00294562380840635,
+        "gap_train_test": 0.0023566448262355433,
+        "modelos_con_overfitting": 13,
+        "pct_overfitting": 27.083333333333332
+    },
+    "datos": {
+        "n_total": 50844,
+        "n_train": 40675,
+        "n_val": 0,
+        "n_test": 10169
+    }
+}

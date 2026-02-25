@@ -1,0 +1,18 @@
+{
+    "fecha_creacion": "2026-02-24T10:33:32.737498",
+    "modelo_tipo": "LightGBM",
+    "hiperparametros": "{'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 200}",
+    "r2_validation": 0.9938381140223597,
+    "rmse_validation": 12.584478043794103,
+    "mae_validation": 7.464964065358498,
+    "r2_test": 0.9943753431808227,
+    "rmse_test": 11.772264296258863,
+    "mae_test": 7.1228028413972755,
+    "features_entrada": 22,
+    "features_procesadas": 22,
+    "reduccion_dimensional": "sin_pca",
+    "encoding": "ohe",
+    "validacion_cruzada": "5-fold",
+    "gap_train_validation": 0.00294562380840635,
+    "nota": "Modelo completamente validado y listo para producci\u00f3n"
+}
