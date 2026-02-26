@@ -10,12 +10,53 @@
   <body>
     <div id="aurora"></div>
 
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="{{ url_for('index') }}">
+    <div class="global-staggered-menu" data-global-menu data-open="false">
+      <button
+        class="gsm-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="Abrir menu de navegacion"
+        aria-expanded="false"
+        aria-controls="global-menu-panel"
+      >
+        <span class="gsm-toggle-label" data-menu-label>Menu</span>
+        <span class="gsm-icon" aria-hidden="true">
+          <span class="gsm-icon-line"></span>
+          <span class="gsm-icon-line gsm-icon-line-v"></span>
+        </span>
+      </button>
+
+      <button class="gsm-backdrop" type="button" data-menu-backdrop aria-label="Cerrar menu"></button>
+      <div class="gsm-layer gsm-layer-1" aria-hidden="true"></div>
+      <div class="gsm-layer gsm-layer-2" aria-hidden="true"></div>
+
+      <aside id="global-menu-panel" class="gsm-panel" data-menu-panel aria-hidden="true">
+        <nav class="gsm-nav" aria-label="Navegacion principal">
+          <a class="gsm-link" href="{{ url_for('index') }}">
+            <span class="gsm-link-num">01</span>
+            <span class="gsm-link-label">Inicio</span>
+          </a>
+          <a class="gsm-link" href="{{ url_for('identificacion') }}">
+            <span class="gsm-link-num">02</span>
+            <span class="gsm-link-label">Simulador</span>
+          </a>
+          <a class="gsm-link" href="{{ url_for('historial') }}">
+            <span class="gsm-link-num">03</span>
+            <span class="gsm-link-label">Historial</span>
+          </a>
+        </nav>
+      </aside>
+    </div>
+
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="brand footer-brand" aria-label="Seguros Lagun Aro">
           <div
-            class="animated-gradient-text with-border brand-logo"
-            id="gradientText"
+            class="animated-gradient-text with-border brand-logo footer-logo-small"
             data-direction="horizontal"
             data-speed="8"
             data-pause-on-hover="false"
@@ -25,23 +66,8 @@
             <div class="gradient-overlay"></div>
             <div class="text-content">Seguros Lagun Aro</div>
           </div>
-        </a>
-        <nav class="nav">
-          <a href="{{ url_for('index') }}" class="nav-link">Inicio</a>
-          <a href="{{ url_for('identificacion') }}" class="nav-link">Simulador</a>
-          <a href="{{ url_for('historial') }}" class="nav-link">Historial</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="container">
-      {% block content %}{% endblock %}
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>Seguros Lagun Aro · 2026</p>
-        <p class="footer-note">Interfaz académica para el Reto 07.</p>
+        </div>
+        <p class="footer-note">Interfaz academica para el Reto 07 - 2026.</p>
       </div>
     </footer>
 
@@ -57,6 +83,8 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/aurora.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script>
       const globalLoader = document.getElementById("global-loading");
 
@@ -132,6 +160,320 @@
         }
       }
 
+      const initScrollFloat = ({
+        element,
+        animationDuration = 1,
+        ease = "back.inOut(2)",
+        scrollStart = "center bottom+=50%",
+        scrollEnd = "bottom bottom-=40%",
+        stagger = 0.03,
+      }) => {
+        if (!element || !window.gsap || !window.ScrollTrigger) return;
+
+        const text = (element.textContent || "").trim();
+        const splitText = text
+          .split("")
+          .map((char) => `<span class="char">${char === " " ? "&nbsp;" : char}</span>`)
+          .join("");
+
+        element.innerHTML = `<span class="scroll-float-text">${splitText}</span>`;
+        const charElements = element.querySelectorAll(".char");
+
+        gsap.fromTo(
+          charElements,
+          {
+            willChange: "opacity, transform",
+            opacity: 0,
+            yPercent: 120,
+            scaleY: 2.3,
+            scaleX: 0.7,
+            transformOrigin: "50% 0%",
+          },
+          {
+            duration: animationDuration,
+            ease,
+            opacity: 1,
+            yPercent: 0,
+            scaleY: 1,
+            scaleX: 1,
+            stagger,
+            scrollTrigger: {
+              trigger: element,
+              scroller: window,
+              start: scrollStart,
+              end: scrollEnd,
+              scrub: true,
+            },
+          }
+        );
+      };
+
+      const introSection = document.querySelector(".intro-scroll-section");
+      if (introSection && window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const primaryPhrase = introSection.querySelector(".intro-phrase-primary");
+        const secondaryPhrase = introSection.querySelector("[data-scroll-float]");
+
+        if (secondaryPhrase) {
+          initScrollFloat({
+            element: secondaryPhrase,
+            animationDuration: Number(secondaryPhrase.dataset.animationDuration || 1),
+            ease: secondaryPhrase.dataset.ease || "back.inOut(2)",
+            scrollStart: secondaryPhrase.dataset.scrollStart || "center bottom+=50%",
+            scrollEnd: secondaryPhrase.dataset.scrollEnd || "bottom bottom-=40%",
+            stagger: Number(secondaryPhrase.dataset.stagger || 0.03),
+          });
+        }
+
+        if (primaryPhrase && secondaryPhrase) {
+          const phraseStart = "top top";
+          const phraseEnd = "+=180";
+
+          gsap.fromTo(
+            primaryPhrase,
+            { opacity: 1, y: 0, filter: "blur(0px)" },
+            {
+              opacity: 0,
+              y: -40,
+              filter: "blur(6px)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: introSection,
+                start: phraseStart,
+                end: phraseEnd,
+                scrub: true,
+              },
+            }
+          );
+
+          gsap.fromTo(
+            secondaryPhrase,
+            { opacity: 0, y: 140, filter: "blur(6px)" },
+            {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: introSection,
+                start: phraseStart,
+                end: phraseEnd,
+                scrub: true,
+              },
+            }
+          );
+        }
+      }
+
+      const toBool = (value, fallback = false) => {
+        if (value === undefined || value === null || value === "") return fallback;
+        return String(value).toLowerCase() === "true";
+      };
+
+      const initCardSwap = (container) => {
+        if (!container || !window.gsap) return;
+
+        const cards = Array.from(container.querySelectorAll(".swap-card"));
+        if (cards.length < 2) return;
+
+        const width = Number(container.dataset.width || 500);
+        const height = Number(container.dataset.height || 400);
+        const cardDistance = Number(container.dataset.cardDistance || 60);
+        const verticalDistance = Number(container.dataset.verticalDistance || 70);
+        const delay = Number(container.dataset.delay || 5000);
+        const pauseOnHover = toBool(container.dataset.pauseOnHover, false);
+        const autoSwap = toBool(container.dataset.autoSwap, true);
+        const skewAmount = Number(container.dataset.skewAmount || 6);
+
+        container.style.setProperty("--swap-width", `${width}px`);
+        container.style.setProperty("--swap-height", `${height}px`);
+
+        const order = Array.from({ length: cards.length }, (_, index) => index);
+        let activeTimeline = null;
+        let intervalId = null;
+        let isAnimating = false;
+        const lastCardExtraX = 24;
+        const lastCardExtraY = 14;
+
+        const makeSlot = (slotIndex, total) => {
+          const isLastSlot = slotIndex === total - 1;
+          return {
+            x: slotIndex * cardDistance + (isLastSlot ? lastCardExtraX : 0),
+            y: -slotIndex * verticalDistance - (isLastSlot ? lastCardExtraY : 0),
+            z: -slotIndex * cardDistance * 1.5,
+            zIndex: total - slotIndex,
+          };
+        };
+
+        const slotSkew = (slotIndex) => (slotIndex === 0 ? 0 : skewAmount);
+
+        const placeNow = (card, slot, skew = 0) => {
+          gsap.set(card, {
+            x: slot.x,
+            y: slot.y,
+            z: slot.z,
+            xPercent: -50,
+            yPercent: -50,
+            skewY: skew,
+            transformOrigin: "center center",
+            zIndex: slot.zIndex,
+            force3D: true,
+          });
+        };
+
+        const renderOrder = (animated = true) => {
+          if (activeTimeline) {
+            activeTimeline.kill();
+            activeTimeline = null;
+          }
+          isAnimating = false;
+
+          order.forEach((cardIndex, slotIndex) => {
+            const card = cards[cardIndex];
+            const slot = makeSlot(slotIndex, cards.length);
+
+            if (!animated) {
+              placeNow(card, slot, slotSkew(slotIndex));
+              return;
+            }
+
+            gsap.set(card, { zIndex: slot.zIndex });
+          });
+
+          if (!animated) return;
+
+          isAnimating = true;
+          activeTimeline = gsap.timeline({
+            defaults: { overwrite: true },
+            onComplete: () => {
+              isAnimating = false;
+              activeTimeline = null;
+            },
+          });
+
+          order.forEach((cardIndex, slotIndex) => {
+            const card = cards[cardIndex];
+            const slot = makeSlot(slotIndex, cards.length);
+            activeTimeline.to(
+              card,
+              {
+                x: slot.x,
+                y: slot.y,
+                z: slot.z,
+                skewY: slotSkew(slotIndex),
+                duration: 0.58,
+                ease: "power2.out",
+              },
+              0
+            );
+          });
+        };
+
+        const rotateForward = () => {
+          if (order.length < 2) return;
+          if (isAnimating) return;
+          order.push(order.shift());
+          renderOrder(true);
+        };
+
+        const bringToFront = (cardIndex) => {
+          if (cardIndex < 0) return;
+          if (activeTimeline) {
+            activeTimeline.kill();
+            activeTimeline = null;
+          }
+          isAnimating = false;
+
+          if (order[0] === cardIndex) {
+            order.push(order.shift());
+            renderOrder(true);
+            return;
+          }
+
+          let safety = cards.length + 1;
+          while (order[0] !== cardIndex && safety > 0) {
+            order.push(order.shift());
+            safety -= 1;
+          }
+
+          renderOrder(true);
+        };
+
+        const restartAutoSwap = () => {
+          if (!autoSwap) return;
+          if (intervalId) window.clearInterval(intervalId);
+          intervalId = window.setInterval(rotateForward, delay);
+        };
+
+        renderOrder(false);
+        if (autoSwap) {
+          restartAutoSwap();
+        }
+
+        if (pauseOnHover && autoSwap) {
+          container.addEventListener("mouseenter", () => {
+            if (intervalId) window.clearInterval(intervalId);
+            if (activeTimeline) activeTimeline.pause();
+          });
+
+          container.addEventListener("mouseleave", () => {
+            if (activeTimeline) activeTimeline.play();
+            restartAutoSwap();
+          });
+        }
+
+        container.addEventListener("click", (event) => {
+          const clickedCard = event.target.closest(".swap-card");
+          if (!clickedCard) return;
+
+          const clickedIndex = cards.indexOf(clickedCard);
+          bringToFront(clickedIndex);
+          if (autoSwap && !pauseOnHover) {
+            restartAutoSwap();
+          }
+        });
+      };
+
+      document.querySelectorAll("[data-card-swap]").forEach((swapElement) => {
+        initCardSwap(swapElement);
+      });
+
+      const initGlobalStaggeredMenu = () => {
+        const menu = document.querySelector("[data-global-menu]");
+        if (!menu) return;
+
+        const toggleBtn = menu.querySelector("[data-menu-toggle]");
+        const panel = menu.querySelector("[data-menu-panel]");
+        const backdrop = menu.querySelector("[data-menu-backdrop]");
+        const label = menu.querySelector("[data-menu-label]");
+        const links = Array.from(menu.querySelectorAll(".gsm-link"));
+        if (!toggleBtn || !panel || !backdrop || !label) return;
+
+        const setOpen = (nextOpen) => {
+          menu.dataset.open = nextOpen ? "true" : "false";
+          toggleBtn.setAttribute("aria-expanded", String(nextOpen));
+          panel.setAttribute("aria-hidden", String(!nextOpen));
+          label.textContent = nextOpen ? "Cerrar" : "Menu";
+        };
+
+        const closeMenu = () => setOpen(false);
+        const toggleMenu = () => setOpen(menu.dataset.open !== "true");
+
+        toggleBtn.addEventListener("click", toggleMenu);
+        backdrop.addEventListener("click", closeMenu);
+        links.forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeMenu();
+        });
+      };
+
+      initGlobalStaggeredMenu();
+
     </script>
   </body>
 </html>
+
