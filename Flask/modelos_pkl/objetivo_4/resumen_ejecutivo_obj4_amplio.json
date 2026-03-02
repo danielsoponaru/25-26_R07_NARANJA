@@ -1,31 +1,31 @@
 {
-    "fecha_ejecucion": "2026-02-24 10:40:06",
+    "fecha_ejecucion": "2026-02-25 17:01:08",
     "total_experimentos": 48,
     "mejor_modelo": {
         "nombre": "LightGBM",
         "reduccion": "sin_pca",
         "encoding": "ohe",
-        "n_features": 22,
+        "n_features": 20,
         "hiperparametros": "{'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 200}"
     },
     "metricas_validation": {
-        "r2": 0.9938381140223597,
-        "rmse": 12.584478043794103,
-        "mae": 7.464964065358498,
-        "mape": 3.903643596420639
+        "r2": 0.9938167223089596,
+        "rmse": 12.606303367266461,
+        "mae": 7.472091940596669,
+        "mape": 3.932391069269488
     },
     "metricas_test": {
-        "r2": 0.9943753431808227,
-        "r2_ajustado": 0.9943631470000596,
-        "rmse": 11.772264296258863,
-        "mae": 7.1228028413972755,
-        "mape": 3.8222957366230452
+        "r2": 0.9943294127503594,
+        "r2_ajustado": 0.9943182369773014,
+        "rmse": 11.820232183978655,
+        "mae": 7.1603806359789735,
+        "mape": 3.862186252504402
     },
     "overfitting": {
-        "gap_train_val": 0.00294562380840635,
-        "gap_train_test": 0.0023566448262355433,
-        "modelos_con_overfitting": 13,
-        "pct_overfitting": 27.083333333333332
+        "gap_train_val": 0.0029318309122884356,
+        "gap_train_test": 0.002353482003418339,
+        "modelos_con_overfitting": 7,
+        "pct_overfitting": 14.583333333333334
     },
     "datos": {
         "n_total": 50844,

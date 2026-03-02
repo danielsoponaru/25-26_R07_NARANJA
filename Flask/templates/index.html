@@ -2,39 +2,89 @@
 
 {% block content %}
   <div class="landing">
+    <section class="intro-scroll-section" aria-label="Mensaje principal">
+      <div class="intro-scroll-stage">
+        <h2 class="intro-phrase intro-phrase-primary">Para todo lo que necesites,</h2>
+        <h2
+          class="intro-phrase intro-phrase-secondary scroll-float"
+          data-scroll-float
+          data-animation-duration="1"
+          data-ease="back.inOut(2)"
+          data-scroll-start="center bottom+=50%"
+          data-scroll-end="bottom bottom-=40%"
+          data-stagger="0.03"
+        >
+          hay un seguro.
+        </h2>
+      </div>
+    </section>
 
     <section class="hero hero-minimal hero-stacked">
       <div class="hero-text">
-        <p class="eyebrow">Seguros Lagun Aro</p>
+        <div class="hero-inline-image">
+          <img src="{{ url_for('static', filename='imagenes/imagenlagunaro.png') }}" alt="Seguros Lagun Aro" />
+        </div>
         <h1>Simula la concesion de tu prestamo con una experiencia clara y elegante.</h1>
         <p class="lead">
-          Este simulador de prestamos esta pensado para la adquisicion de un vehiculo.
-          Introduce tus datos para obtener una simulacion rapida y ordenada.
+          Esta web te guia paso a paso para estimar la concesion de un prestamo para vehiculo de
+          forma clara, sin pasos ocultos y con toda la informacion en pantalla.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="{{ url_for('identificacion') }}">
-            Simula tu concesion del prestamo
-          </a>
-          <a class="btn btn-ghost" href="{{ url_for('historial') }}">
-            Historial
-          </a>
+        <div class="hero-guide" aria-label="Guia visual del simulador">
+          <article class="hero-guide-card">
+            <span class="hero-guide-step">Paso 1</span>
+            <h3>Identificacion</h3>
+            <p>Introduce nombre completo y DNI para vincular tu simulacion de forma segura.</p>
+          </article>
+          <article class="hero-guide-card">
+            <span class="hero-guide-step">Paso 2</span>
+            <h3>Simulacion</h3>
+            <p>Completa datos personales, financieros y laborales para generar el resultado.</p>
+          </article>
+          <article class="hero-guide-card">
+            <span class="hero-guide-step">Paso 3</span>
+            <h3>Historial</h3>
+            <p>Consulta por DNI las simulaciones guardadas para revisar y comparar resultados.</p>
+          </article>
+          <div class="hero-guide-tags-block" aria-label="Variables de la simulacion">
+            <p class="hero-guide-tags-caption">
+              Variables que analiza la simulacion: datos economicos, personales y laborales.
+            </p>
+            <div class="hero-guide-tags">
+              <span class="hero-guide-tag">Ingresos</span>
+              <span class="hero-guide-tag">Interes</span>
+              <span class="hero-guide-tag">Duracion</span>
+              <span class="hero-guide-tag">Scoring</span>
+              <span class="hero-guide-tag">Hipoteca</span>
+              <span class="hero-guide-tag">Fiador</span>
+              <span class="hero-guide-tag">Jornada</span>
+              <span class="hero-guide-tag">Estado civil</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="hero-metrics hero-metrics-below">
-        <div class="metrics-glass-container" aria-label="Indicadores principales">
-          <article class="metrics-glass" data-text="371.000" style="--r:-16;">
-            <span class="metrics-glass-title">Clientes</span>
-          </article>
-          <article class="metrics-glass" data-text="26 MEUR" style="--r:-6;">
-            <span class="metrics-glass-title">Beneficios 2024</span>
-          </article>
-          <article class="metrics-glass" data-text="200 MEUR" style="--r:8;">
-            <span class="metrics-glass-title">Primas</span>
-          </article>
-          <article class="metrics-glass" data-text="440%" style="--r:18;">
-            <span class="metrics-glass-title">Solvencia</span>
-          </article>
+        <div class="metrics-glass-container" aria-label="Resumen de secciones principales">
+          <a class="metrics-glass metrics-glass-link" href="{{ url_for('index') }}" style="--r:-10;">
+            <span class="metrics-glass-title">Inicio</span>
+            <p class="metrics-glass-copy">
+              Resumen visual del proceso completo, accesos directos y espacio para investigar datos
+              de Seguros Lagun Aro.
+            </p>
+          </a>
+          <a class="metrics-glass metrics-glass-link" href="{{ url_for('identificacion') }}" style="--r:0;">
+            <span class="metrics-glass-title">Simulador</span>
+            <p class="metrics-glass-copy">
+              Formulario unico con variables personales, laborales y financieras para calcular tu
+              simulacion.
+            </p>
+          </a>
+          <a class="metrics-glass metrics-glass-link" href="{{ url_for('historial') }}" style="--r:10;">
+            <span class="metrics-glass-title">Historial</span>
+            <p class="metrics-glass-copy">
+              Busqueda por DNI para recuperar simulaciones guardadas y revisar cada dato registrado.
+            </p>
+          </a>
         </div>
       </div>
     </section>
@@ -57,80 +107,22 @@
         <div class="card-stack">
           <article class="stack-card">
             <div class="stack-card-content">
-              <h2>ASI SOMOS</h2>
-              <p>
-                Seguros Lagun Aro esta formada por Seguros Lagun Aro Vida y Seguros Lagun Aro,
-                participadas al 100 % por LABORAL Kutxa e integrada en el Grupo Mondragon.
-              </p>
-              <p>
-                Ofrecemos un servicio profesional, honesto y cercano, con liderazgo en calidad y
-                asesoramiento personalizado.
-              </p>
-              <p>
-                Contamos con el certificado EthSI, distintivo de calidad etica y solidaria.
-              </p>
-              <p>
-                El 76 % de nuestros productos se comercializa en oficinas de LABORAL Kutxa, el 22 %
-                a traves de mediacion y el 2 % por canal digital.
-              </p>
-            </div>
-          </article>
-
-          <article class="stack-card">
-            <div class="stack-card-content">
-              <h2>CIFRAS CLAVE 2024</h2>
-              <p>
-                En 2024, Seguros Lagun Aro alcanzo 371.000 clientes y 647.083 polizas en cartera,
-                con un volumen total de primas de 199 millones de euros y un beneficio antes de
-                impuestos de 26,3 millones de euros. Las provisiones matematicas se situaron en
-                300 millones de euros.
-              </p>
-              <p>
-                El negocio de No Vida alcanzo los 143 millones de euros, destacando el ramo de
-                Automoviles con 76 millones y Hogar con 53 millones. El negocio de Vida se situo en
-                56 millones de euros.
-              </p>
-              <p>
-                La entidad mantiene una solida posicion de solvencia, con un ratio del 440 % en Vida,
-                234 % en No Vida y un 310 % a nivel de Grupo asegurador.
-              </p>
-            </div>
-          </article>
-
-          <article class="stack-card">
-            <div class="stack-card-content">
-              <h2>SOSTENIBILIDAD</h2>
-              <p>
-                La sostenibilidad esta integrada en la gobernanza mediante un Comite de
-                Sostenibilidad y una Politica especifica que guia la estrategia a largo plazo.
-              </p>
-              <p>
-                Los temas materiales prioritarios son seguridad y privacidad de datos, cambio
-                climatico, producto sostenible, buen gobierno, inversion sostenible, innovacion y
-                apoyo a la sociedad.
-              </p>
-              <p>
-                Se integran criterios ESG en la inversion, la suscripcion y el diseno de productos,
-                incluyendo exclusiones sectoriales, analisis de riesgos y desarrollo de inversiones
-                tematicas sostenibles.
-              </p>
-            </div>
-          </article>
-
-          <article class="stack-card">
-            <div class="stack-card-content">
               <h2>PERSONAS</h2>
               <p>
-                La plantilla esta formada por 185 personas, el 69 % mujeres y el 31 % hombres.
-                El 97 % cuenta con contrato indefinido.
+                La plantilla esta formada por <span class="stack-highlight">185 personas</span>, el
+                <span class="stack-highlight">69 %</span> mujeres y el
+                <span class="stack-highlight">31 %</span> hombres. El
+                <span class="stack-highlight">97 %</span> cuenta con contrato indefinido.
               </p>
               <p>
-                En 2024 se impartieron 10.415 horas de formacion, con una media de 55,99 horas por
-                persona y una participacion del 98 % de la plantilla.
+                En 2024 se impartieron <span class="stack-highlight">10.415 horas de formacion</span>,
+                con una media de <span class="stack-highlight">55,99 horas</span> por persona y una
+                participacion del <span class="stack-highlight">98 %</span> de la plantilla.
               </p>
               <p>
-                El 50 % de los puestos de responsabilidad estan ocupados por mujeres y el 38 % del
-                Consejo de Direccion son mujeres.
+                El <span class="stack-highlight">50 %</span> de los puestos de responsabilidad estan
+                ocupados por mujeres y el <span class="stack-highlight">38 %</span> del Consejo de
+                Direccion son mujeres.
               </p>
               <p>
                 En 2024 no se registraron accidentes laborales.
@@ -140,22 +132,53 @@
 
           <article class="stack-card">
             <div class="stack-card-content">
+              <h2>SOSTENIBILIDAD</h2>
+              <p>
+                La sostenibilidad esta integrada en la gobernanza mediante un
+                <span class="stack-highlight">Comite de Sostenibilidad</span> y una Politica
+                especifica que guia la estrategia a largo plazo.
+              </p>
+              <p>
+                Los temas materiales prioritarios son
+                <span class="stack-highlight">seguridad y privacidad de datos</span>,
+                <span class="stack-highlight">cambio climatico</span>,
+                <span class="stack-highlight">producto sostenible</span>,
+                <span class="stack-highlight">buen gobierno</span>,
+                <span class="stack-highlight">inversion sostenible</span> e
+                <span class="stack-highlight">innovacion</span>.
+              </p>
+              <p>
+                Se integran <span class="stack-highlight">criterios ESG</span> en la inversion, la
+                suscripcion y el diseno de productos, incluyendo exclusiones sectoriales, analisis de
+                riesgos y desarrollo de inversiones tematicas sostenibles.
+              </p>
+            </div>
+          </article>
+
+          <article class="stack-card">
+            <div class="stack-card-content">
               <h2>INNOVACION Y SERVICIO</h2>
               <p>
-                La digitalizacion es un eje estrategico. El 35,1 % de las verificaciones de
-                automovil se realizan mediante autoverificacion con inteligencia artificial.
-                El 29 % de las peritaciones de automovil y el 25 % de hogar se realizaron en remoto.
+                La digitalizacion es un eje estrategico. El
+                <span class="stack-highlight">35,1 %</span> de las verificaciones de automovil se
+                realizan mediante autoverificacion con inteligencia artificial. El
+                <span class="stack-highlight">29 %</span> de las peritaciones de automovil y el
+                <span class="stack-highlight">25 %</span> de hogar se realizaron en remoto.
               </p>
               <p>
-                Se implantaron 56 automatizaciones que liberaron 6.541 horas de trabajo.
+                Se implantaron <span class="stack-highlight">56 automatizaciones</span> que liberaron
+                <span class="stack-highlight">6.541 horas</span> de trabajo.
               </p>
               <p>
-                El 87,2 % de la clientela de Autos y el 71,7 % de Hogar se muestran satisfechos o
-                muy satisfechos con la gestion del siniestro.
+                El <span class="stack-highlight">87,2 %</span> de la clientela de Autos y el
+                <span class="stack-highlight">71,7 %</span> de Hogar se muestran satisfechos o muy
+                satisfechos con la gestion del siniestro.
               </p>
               <p>
-                En 2024 se gestionaron 93.287 expedientes de hogar, se repararon 30.065 vehiculos y
-                el 92 % de las asistencias se atendieron en menos de una hora.
+                En 2024 se gestionaron <span class="stack-highlight">93.287 expedientes</span> de
+                hogar, se repararon <span class="stack-highlight">30.065 vehiculos</span> y el
+                <span class="stack-highlight">92 %</span> de las asistencias se atendieron en menos de
+                una hora.
               </p>
             </div>
           </article>
@@ -163,14 +186,133 @@
       </div>
     </section>
 
+    <section class="card-swap-stage" aria-label="Tarjetas rotativas">
+      <div class="card-swap-shell">
+        <div
+          class="card-swap-container"
+          data-card-swap
+          data-width="1260"
+          data-height="430"
+          data-card-distance="102"
+          data-vertical-distance="84"
+          data-delay="15000"
+          data-auto-swap="false"
+          data-pause-on-hover="false"
+          data-skew-amount="6"
+        >
+          <article class="swap-card">
+            <h3>ASI SOMOS</h3>
+            <p>
+              Seguros Lagun Aro esta formada por Seguros Lagun Aro Vida y Seguros Lagun Aro,
+              <span class="swap-highlight">participadas al 100 % por LABORAL Kutxa</span> e integrada
+              en el Grupo Mondragon.
+            </p>
+            <p>
+              Ofrecemos un servicio profesional, honesto y cercano, con liderazgo en calidad y
+              asesoramiento personalizado.
+            </p>
+            <p>
+              Contamos con el <span class="swap-highlight">certificado EthSI</span>, distintivo de
+              calidad etica y solidaria.
+            </p>
+            <p>
+              El <span class="swap-highlight">76 %</span> de nuestros productos se comercializa en
+              oficinas de LABORAL Kutxa, el <span class="swap-highlight">22 %</span> a traves de
+              mediacion y el <span class="swap-highlight">2 %</span> por canal digital.
+            </p>
+          </article>
+          <article class="swap-card">
+            <h3>CIFRAS CLAVE 2024</h3>
+            <p>
+              En 2024, Seguros Lagun Aro alcanzo <span class="swap-highlight">371.000 clientes</span>
+              y <span class="swap-highlight">647.083 polizas</span> en cartera, con un volumen total
+              de primas de <span class="swap-highlight">199 millones de euros</span> y un beneficio
+              antes de impuestos de <span class="swap-highlight">26,3 millones de euros</span>.
+            </p>
+            <p>
+              Las provisiones matematicas se situaron en
+              <span class="swap-highlight">300 millones de euros</span>. El negocio de No Vida
+              alcanzo los <span class="swap-highlight">143 millones de euros</span>, destacando el
+              ramo de Automoviles con <span class="swap-highlight">76 millones</span> y Hogar con
+              <span class="swap-highlight">53 millones</span>. El negocio de Vida se situo en
+              <span class="swap-highlight">56 millones de euros</span>.
+            </p>
+            <p>
+              La entidad mantiene una solida posicion de solvencia, con un ratio del
+              <span class="swap-highlight">440 % en Vida</span>,
+              <span class="swap-highlight">234 % en No Vida</span> y un
+              <span class="swap-highlight">310 %</span> a nivel de Grupo asegurador.
+            </p>
+          </article>
+          <article class="swap-card">
+            <h3>COMPROMISO SOCIAL</h3>
+            <p>
+              Contribuimos activamente al desarrollo de nuestro entorno mediante colaboraciones
+              solidarias y apoyo a asociaciones sociales.
+            </p>
+            <p>
+              En 2024 aportamos <span class="swap-highlight">22.360 EUR</span> a Stop Violencia Vial
+              por cada nueva poliza de Automovil suscrita y
+              <span class="swap-highlight">9.718 EUR</span> a la Asociacion Espanola Contra el Cancer
+              por nuevas polizas de Vida y Accidentes.
+            </p>
+            <p>
+              Ademas, realizamos una donacion de <span class="swap-highlight">7.400 EUR</span> al
+              Banco de Alimentos de Bizkaia a traves del proyecto Fruta Solidaria.
+            </p>
+            <p>
+              Promovemos tambien la <span class="swap-highlight">contratacion local</span>, la
+              <span class="swap-highlight">colaboracion con la Universidad</span> y el apoyo a
+              diferentes asociaciones de nuestro entorno.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stacking-section stacking-section-bottom" aria-label="Sobre nosotros duplicado">
+      <div class="curved-loop" aria-hidden="true">
+        <svg viewBox="0 0 1440 320" class="curved-loop-svg">
+          <defs>
+            <path id="curve-bottom" d="M-120,120 Q720,280 1560,120" fill="transparent"></path>
+          </defs>
+          <text class="loop-text">
+            <textPath href="#curve-bottom" startOffset="0%">
+              Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038; Sobre Nosotros &#10038;
+              <animate attributeName="startOffset" from="0%" to="-100%" dur="24s" repeatCount="indefinite"></animate>
+            </textPath>
+          </text>
+        </svg>
+      </div>
+    </section>
+
     <section class="team team-minimal">
-      <h2 class="scroll-reveal-text">Equipo del proyecto</h2>
-      <div class="team-grid">
-        <div class="team-card">Gaizka</div>
-        <div class="team-card">Daniel A.</div>
-        <div class="team-card">Aiert</div>
-        <div class="team-card">Ander</div>
-        <div class="team-card">Inigo</div>
+      <div class="metro-line-card" aria-label="Linea del equipo del proyecto">
+        <div class="metro-line-point">
+          <p class="short-name">Aiert</p>
+          <p class="hover-surname">Zamora</p>
+        </div>
+        <div class="metro-line-point">
+          <p class="short-name">Ander</p>
+          <p class="hover-surname">Sainz</p>
+        </div>
+        <div class="metro-line-point">
+          <p class="short-name">Erik</p>
+          <p class="hover-surname">Arbaiza</p>
+        </div>
+        <div class="metro-line-point">
+          <p class="short-name">I&ntilde;igo</p>
+          <p class="hover-surname">Barrenechea</p>
+        </div>
+        <div class="metro-line-point">
+          <p class="short-name">Daniel</p>
+          <p class="hover-surname">Soponaru</p>
+        </div>
+        <div class="metro-line-point">
+          <p class="short-name">Gaizka</p>
+          <p class="hover-surname">San Miguel</p>
+        </div>
+        <p class="metro-line-group">Grupo naranja</p>
       </div>
     </section>
   </div>
