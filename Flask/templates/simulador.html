@@ -55,7 +55,14 @@
       </label>
       <label class="field">
         <span>Duración (meses)</span>
-        <input type="number" name="Duracion" min="0" placeholder="Ej: 36" required />
+        <select name="Duracion" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option value="12">12</option>
+          <option value="24">24</option>
+          <option value="36">36</option>
+          <option value="48">48</option>
+          <option value="60">60</option>
+        </select>
       </label>
       <label class="field">
         <span>Ratio deuda / ingresos</span>
@@ -93,22 +100,27 @@
       </label>
       <label class="field">
         <span>Jornada</span>
-        <select name="Jornada" required>
+        <select id="jornada-select" required>
           <option value="" disabled selected>Selecciona</option>
           <option value="autonomo">Autónomo</option>
           <option value="desempleado">Desempleado</option>
           <option value="jornada completa">Jornada completa</option>
           <option value="jornada parcial">Jornada parcial</option>
         </select>
+        <input type="hidden" name="Tipo_Jornada_Laboral_Desempleado" value="0" />
+        <input type="hidden" name="Tipo_Jornada_Laboral_Jornada completa" value="0" />
+        <input type="hidden" name="Tipo_Jornada_Laboral_Tiempo parcial" value="0" />
       </label>
       <label class="field">
         <span>Estado civil</span>
-        <select name="Estado_Civil" required>
+        <select id="estado-civil-select" required>
           <option value="" disabled selected>Selecciona</option>
           <option value="casado">Casado</option>
           <option value="divorciado">Divorciado</option>
           <option value="soltero">Soltero</option>
         </select>
+        <input type="hidden" name="Estado_Civil_Divorciado" value="0" />
+        <input type="hidden" name="Estado_Civil_Soltero" value="0" />
       </label>
     </div>
 
@@ -121,8 +133,48 @@
   <script>
     const simuladorForm = document.getElementById("simulador-form");
     const loadingOverlay = document.getElementById("loading-overlay");
+    const jornadaSelect = document.getElementById("jornada-select");
+    const estadoCivilSelect = document.getElementById("estado-civil-select");
+
+    const mapearJornada = () => {
+      const desempleado = simuladorForm.querySelector(
+        "input[name='Tipo_Jornada_Laboral_Desempleado']"
+      );
+      const completa = simuladorForm.querySelector(
+        "input[name='Tipo_Jornada_Laboral_Jornada completa']"
+      );
+      const parcial = simuladorForm.querySelector(
+        "input[name='Tipo_Jornada_Laboral_Tiempo parcial']"
+      );
+      if (!desempleado || !completa || !parcial || !jornadaSelect) return;
+      desempleado.value = "0";
+      completa.value = "0";
+      parcial.value = "0";
+      if (jornadaSelect.value === "desempleado") desempleado.value = "1";
+      if (jornadaSelect.value === "jornada completa") completa.value = "1";
+      if (jornadaSelect.value === "jornada parcial") parcial.value = "1";
+    };
+
+    const mapearEstadoCivil = () => {
+      const divorciado = simuladorForm.querySelector(
+        "input[name='Estado_Civil_Divorciado']"
+      );
+      const soltero = simuladorForm.querySelector(
+        "input[name='Estado_Civil_Soltero']"
+      );
+      if (!divorciado || !soltero || !estadoCivilSelect) return;
+      divorciado.value = "0";
+      soltero.value = "0";
+      if (estadoCivilSelect.value === "divorciado") divorciado.value = "1";
+      if (estadoCivilSelect.value === "soltero") soltero.value = "1";
+    };
+
+    jornadaSelect?.addEventListener("change", mapearJornada);
+    estadoCivilSelect?.addEventListener("change", mapearEstadoCivil);
 
     simuladorForm.addEventListener("submit", function (event) {
+      mapearJornada();
+      mapearEstadoCivil();
       event.preventDefault();
       loadingOverlay.classList.add("is-visible");
       loadingOverlay.setAttribute("aria-hidden", "false");
