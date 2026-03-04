@@ -11,6 +11,61 @@
     </div>
   </section>
 
+  {% if decision_prestamo %}
+    <div class="plain-panel">
+      <div class="plain-row">
+        <span class="plain-label">Resultado de la hipoteca</span>
+        <span class="plain-value">{{ decision_prestamo }}</span>
+      </div>
+      <div class="plain-row">
+        <span class="plain-label">Mensaje</span>
+        <span class="plain-value">
+          {% if decision_prestamo == "Préstamo concedido" %}
+            Enhorabuena, tu préstamo para vehículo ha sido concedido. En breve recibirás más detalles.
+          {% elif decision_prestamo == "Préstamo rechazado" %}
+            Gracias por tu solicitud. En esta ocasión no podemos aprobar tu préstamo para vehículo.
+            Te animamos a revisar tu información y volver a intentarlo más adelante.
+          {% else %}
+            Resultado no disponible.
+          {% endif %}
+        </span>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if mensajes_metricas %}
+    {% set items_a_mostrar = mensajes_metricas %}
+    {% if decision_prestamo == "Préstamo rechazado" %}
+      {% set items_a_mostrar = mensajes_metricas | selectattr('mejorable') | list %}
+    {% endif %}
+  {% endif %}
+
+  {% if items_a_mostrar %}
+    <div class="plain-panel">
+      <h3 class="plain-title">Detalle de la simulación</h3>
+      {% for item in items_a_mostrar %}
+        <div class="plain-row">
+          <span class="plain-label">{{ item.titulo }}</span>
+          <span class="plain-value">
+            {{ item.categoria }} · {{ item.significancia }}
+            {% if item.valor is not none %}
+              — Valor: {{ item.valor }}
+            {% endif %}
+          </span>
+        </div>
+        <div class="plain-row">
+          <span class="plain-label">Mensaje</span>
+          <span class="plain-value">{{ item.mensaje }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  {% elif decision_prestamo == "Préstamo rechazado" %}
+    <div class="plain-panel">
+      <h3 class="plain-title">Detalle de la simulación</h3>
+      <p>No se han detectado métricas críticas que requieran mejora.</p>
+    </div>
+  {% endif %}
+
   <div class="action-panel">
     <a class="btn btn-primary" href="{{ url_for('index') }}">Volver a la página principal</a>
     {% if dni %}

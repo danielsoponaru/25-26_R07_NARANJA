@@ -59,11 +59,11 @@
       </div>
       <div class="plain-row">
         <span class="plain-label">Estudios</span>
-        <span class="plain-value">{{ registro["estudios"] }}</span>
+        <span class="plain-value">{{ registro["estudios"] | capitalize }}</span>
       </div>
       <div class="plain-row">
         <span class="plain-label">Posesión hipoteca</span>
-        <span class="plain-value">{{ registro["posesion_hipoteca"] }}</span>
+        <span class="plain-value">{{ registro["posesion_hipoteca"] | capitalize }}</span>
       </div>
       <div class="plain-row">
         <span class="plain-label">Personas a cargo</span>
@@ -71,20 +71,85 @@
       </div>
       <div class="plain-row">
         <span class="plain-label">Fiador</span>
-        <span class="plain-value">{{ registro["fiador"] }}</span>
+        <span class="plain-value">{{ registro["fiador"] | capitalize }}</span>
       </div>
       <div class="plain-row">
         <span class="plain-label">Jornada</span>
-        <span class="plain-value">{{ registro["jornada"] }}</span>
+        <span class="plain-value">{{ registro["jornada"] | capitalize }}</span>
       </div>
       <div class="plain-row">
         <span class="plain-label">Estado civil</span>
-        <span class="plain-value">{{ registro["estado_civil"] }}</span>
+        <span class="plain-value">{{ registro["estado_civil"] | capitalize }}</span>
       </div>
       <div class="plain-row">
         <span class="plain-label">Registrado</span>
         <span class="plain-value">{{ registro["created_at"] }}</span>
       </div>
+      <div class="plain-row">
+        <span class="plain-label">Resultado de la hipoteca</span>
+        <span class="plain-value">
+          {% if decision_prestamo %}
+            {{ decision_prestamo }}
+          {% else %}
+            No disponible
+          {% endif %}
+        </span>
+      </div>
+      {% if es_admin %}
+        <div class="plain-row">
+          <span class="plain-label">Probabilidad de impago</span>
+          <span class="plain-value">
+            {% if probabilidad_impago is not none %}
+              {{ (probabilidad_impago * 100) | round(2) }} %
+            {% else %}
+              No disponible
+            {% endif %}
+          </span>
+        </div>
+        <div class="plain-row">
+          <span class="plain-label">Cluster asignado</span>
+          <span class="plain-value">
+            {% if cluster_kmeans is not none %}
+              {{ cluster_kmeans }}
+            {% else %}
+              No disponible
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if mensajes_metricas %}
+    {% set items_a_mostrar = mensajes_metricas %}
+    {% if decision_prestamo == "Préstamo rechazado" %}
+      {% set items_a_mostrar = mensajes_metricas | selectattr('mejorable') | list %}
+    {% endif %}
+  {% endif %}
+
+  {% if items_a_mostrar %}
+    <div class="plain-panel">
+      <h3 class="plain-title">Detalle de la simulación</h3>
+      {% for item in items_a_mostrar %}
+        <div class="plain-row">
+          <span class="plain-label">{{ item.titulo }}</span>
+          <span class="plain-value">
+            {{ item.categoria }} · {{ item.significancia }}
+            {% if item.valor is not none %}
+              — Valor: {{ item.valor }}
+            {% endif %}
+          </span>
+        </div>
+        <div class="plain-row">
+          <span class="plain-label">Mensaje</span>
+          <span class="plain-value">{{ item.mensaje }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  {% elif decision_prestamo == "Préstamo rechazado" %}
+    <div class="plain-panel">
+      <h3 class="plain-title">Detalle de la simulación</h3>
+      <p>No se han detectado métricas críticas que requieran mejora.</p>
     </div>
   {% endif %}
 
