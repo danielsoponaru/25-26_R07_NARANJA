@@ -1,5 +1,5 @@
 {
-    "fecha_ejecucion": "2026-02-25 17:01:08",
+    "fecha_ejecucion": "2026-03-04 17:20:08",
     "total_experimentos": 48,
     "mejor_modelo": {
         "nombre": "LightGBM",
