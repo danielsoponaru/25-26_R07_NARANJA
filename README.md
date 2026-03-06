@@ -66,6 +66,7 @@ La carpeta `Datos/Transformados/` está vacía en el repositorio y contiene un `
 ├─ 05-Objetivo_4.ipynb
 ├─ 06-Visualizacion.ipynb
 ├─ entorno_RETO07.yml
+├─ funciones.py
 └─ indicaciones_entorno_virtual_conda.txt
 ```
 
