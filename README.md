@@ -70,4 +70,4 @@ La carpeta `Datos/Transformados/` está vacía en el repositorio y contiene un `
 └─ indicaciones_entorno_virtual_conda.txt
 ```
 
-No hemos encontrado valores faltantes ni outliers, por eso no hemos utilizado procesamiento.py aunque hemos implementado algunas funciones.
+No hemos encontrado valores faltantes ni outliers, por eso no hemos utilizado procesamiento.py aunque hemos implementado algunas funciones en el objetivo 4.
