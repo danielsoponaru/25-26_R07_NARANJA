@@ -29,22 +29,23 @@ Flask/
 +- requirements.txt               (dependencias de la app)
 +- README.md                      (este documento)
 +- modelos_pkl/
-¦  +- clustering/
-¦  ¦  +- modelo_clustering.pkl    (modelo de clustering)
-¦  ¦  +- scaler_clustering.pkl    (escalado de variables)
-¦  ¦  +- feature_names_clustering.pkl (orden de features)
-¦  ¦  +- config_clustering.json   (parametros/metadata)
-¦  +- objetivo_4/
-¦  ¦  +- modelo_final.pkl         (modelo de coste esperado)
-¦  ¦  +- scaler_final.pkl         (escalado del objetivo 4)
-¦  ¦  +- feature_names.pkl        (features usadas por el modelo)
-¦  ¦  +- config_produccion.json   (configuracion de produccion)
-¦  ¦  +- resumen_ejecutivo_obj4_amplio.json (resumen)
-¦  +- modelo_reglog.pkl           (archivo disponible; no lo referencia app.py)
+??  +- clustering/
+??  ??  +- modelo_clustering.pkl    (modelo de clustering)
+??  ??  +- scaler_clustering.pkl    (escalado de variables)
+??  ??  +- feature_names_clustering.pkl (orden de features)
+??  ??  +- config_clustering.json   (parametros/metadata)
+??  +- objetivo_3/
+??  ??  +- modelo_reglog.pkl        (modelo de impago)
+??  +- objetivo_4/
+??  ??  +- modelo_final.pkl         (modelo de coste esperado)
+??  ??  +- scaler_final.pkl         (escalado del objetivo 4)
+??  ??  +- feature_names.pkl        (features usadas por el modelo)
+??  ??  +- config_produccion.json   (configuracion de produccion)
+??  ??  +- resumen_ejecutivo_obj4_amplio.json (resumen)
 +- static/
-¦  +- css/styles.css              (estilos)
-¦  +- js/aurora.js                (animaciones/efectos)
-¦  +- imagenes/imagenlagunaro.png (logo/imagen)
+Â¦  +- css/styles.css              (estilos)
+Â¦  +- js/aurora.js                (animaciones/efectos)
+Â¦  +- imagenes/imagenlagunaro.png (logo/imagen)
 +- templates/
    +- base.html                   (layout base + menu y loaders)
    +- index.html                  (landing)
